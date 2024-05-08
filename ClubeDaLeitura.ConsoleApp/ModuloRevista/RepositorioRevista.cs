@@ -8,5 +8,9 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
 {
     internal class RepositorioRevista
     {
+        internal Revista SelecionarPorId(int v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
