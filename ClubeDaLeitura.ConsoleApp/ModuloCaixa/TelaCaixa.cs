@@ -23,18 +23,18 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
 
             Console.WriteLine(
                 "{0, -10} | {1, -20} | {2, -10} | {3,-20} | {4,-24}",
-                "Id", "Etiqueta", "Cor", "Dias emprestados", "Número de Revistas" //colocar revistas
-            );
+                "Id", "Etiqueta", "Cor", "Dias emprestados", "Número de Revistas" 
+            );//colocar revistas
 
             ArrayList caixasCadastradas = repositorio.SelecionarTodos();
 
             foreach (Caixa caixa in caixasCadastradas)
             {
                 if (caixa == null)
-                    continue;
+                  continue;
 
                 Console.WriteLine(
-                    "{0, -10} | {1, -20} | {2, -10} | {3,-20} | {4, -15}",
+                    "{0, -10} | {1, -20} | {2, -10} | {3,-20} ",
                     caixa.Id, caixa.Etiqueta, caixa.Cor, caixa.DiasEmprestados
                 );
             }
