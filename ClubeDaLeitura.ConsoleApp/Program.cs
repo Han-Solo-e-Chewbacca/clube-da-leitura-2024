@@ -1,6 +1,9 @@
 ﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
 using ClubeDaLeitura.ConsoleApp.ModuloAmigo;
 using ClubeDaLeitura.ConsoleApp.ModuloCaixa;
+using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
+using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
+using ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
 namespace ClubeDaLeitura.ConsoleApp
 {
@@ -19,6 +22,16 @@ namespace ClubeDaLeitura.ConsoleApp
             TelaCaixa telaCaixa = new TelaCaixa();
             telaCaixa.tipoEntidade = "Caixa";
             telaCaixa.repositorio = repositorioCaixa;
+
+            RepositorioEmprestimo repositorioEmprestimo = new RepositorioEmprestimo();
+
+            TelaEmprestimo telaEmprestimo = new TelaEmprestimo();
+            telaEmprestimo.tipoEntidade = "Empréstimo";
+            telaEmprestimo.repositorio=repositorioEmprestimo;
+            telaEmprestimo.repositorioAmigo = repositorioAmigo ;
+            telaEmprestimo.telaAmigo = telaAmigo ;
+            //telaEmprestimo.repositorioRevista = RepositorioRevista;
+            //telaEmprestimo.telaRevista = telaRevista;
 
 
             while (true)
@@ -40,7 +53,7 @@ namespace ClubeDaLeitura.ConsoleApp
                     tela = tela;
 
                 else if (opcaoPrincipalEscolhida == '4')
-                    tela = tela;
+                    tela = telaEmprestimo;
 
                 else if (opcaoPrincipalEscolhida == '5')
                     tela = tela;
