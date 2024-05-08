@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClubeDaLeitura.ConsoleApp
+namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
 {
-    internal class Reserva
+    internal class Emprestimo
     {
     }
 }
