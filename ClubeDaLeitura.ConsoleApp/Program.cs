@@ -3,6 +3,7 @@ using ClubeDaLeitura.ConsoleApp.ModuloAmigo;
 using ClubeDaLeitura.ConsoleApp.ModuloCaixa;
 using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
 using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
+using ClubeDaLeitura.ConsoleApp.ModuloReserva;
 using ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
 namespace ClubeDaLeitura.ConsoleApp
@@ -47,6 +48,19 @@ namespace ClubeDaLeitura.ConsoleApp
             //telaEmprestimo.repositorioRevista = RepositorioRevista;
             //telaEmprestimo.telaRevista = telaRevista;
 
+            RepositorioReserva repositorioReserva = new RepositorioReserva();
+
+            TelaReserva telaReserva = new TelaReserva();
+            telaReserva.tipoEntidade = "Reserva";
+            telaReserva.telaRevista = telaRevista;
+            telaReserva.repositorioRevista = repositorioRevista ;
+            telaReserva.repositorioAmigo= repositorioAmigo ;
+            telaReserva.telaAmigo = telaAmigo;
+            telaReserva.repositorio=repositorioReserva;
+            
+
+
+
 
             while (true)
             {
@@ -70,7 +84,7 @@ namespace ClubeDaLeitura.ConsoleApp
                     tela = telaEmprestimo;
 
                 else if (opcaoPrincipalEscolhida == '5')
-                    tela = tela;
+                    tela = telaReserva;
 
                 else if (opcaoPrincipalEscolhida == '6')
                     tela = tela;

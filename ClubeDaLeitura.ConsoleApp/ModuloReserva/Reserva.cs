@@ -16,7 +16,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloReserva
         public Reserva(Amigo amigo, Revista revista, DateTime dataReserva)
         {
             
-            DataReserva = dataReserva;
+            DataReserva = DateTime.Now;
             DataLimite = dataReserva.AddDays(10); 
             Amigo = amigo;
             Revista = revista;

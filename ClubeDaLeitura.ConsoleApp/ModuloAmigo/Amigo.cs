@@ -1,5 +1,5 @@
 ﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
-using ClubeDaLeitura.ConsoleApp.ModuloMulta;
+//using ClubeDaLeitura.ConsoleApp.ModuloMulta;
 using System;
 using System.Collections;
 using System.Collections.Generic;
