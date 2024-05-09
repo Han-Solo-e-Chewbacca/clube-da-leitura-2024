@@ -1,4 +1,5 @@
 ﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
+using ClubeDaLeitura.ConsoleApp.ModuloRevista;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +11,8 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
 {
     internal class TelaCaixa : TelaBase
     {
+        public RepositorioRevista repositorioRevista = null;
+        public TelaRevista TelaRevista = null;
         public override void VisualizarRegistros(bool exibirTitulo)
         {
             if (exibirTitulo)
@@ -22,9 +25,9 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
             Console.WriteLine();
 
             Console.WriteLine(
-                "{0, -10} | {1, -20} | {2, -10} | {3,-20} | {4,-24}",
-                "Id", "Etiqueta", "Cor", "Dias emprestados", "Número de Revistas" 
-            );//colocar revistas
+                "{0, -10} | {1, -20} | {2, -10} | {3,-20}",
+                "Id", "Etiqueta", "Cor", "Dias emprestados" 
+            );
 
             ArrayList caixasCadastradas = repositorio.SelecionarTodos();
 
@@ -37,7 +40,29 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
                     "{0, -10} | {1, -20} | {2, -10} | {3,-20} ",
                     caixa.Id, caixa.Etiqueta, caixa.Cor, caixa.DiasEmprestados
                 );
+                
+
             }
+
+            //ArrayList revistasCadastradas = repositorioRevista.SelecionarTodos();
+
+          //  Console.WriteLine("REVISTAS:");
+
+          //  Console.WriteLine(
+          //    "{0, -10} | {1, -20} | {2, -10}",
+          //    "Id", "Titulo", "Caixa"
+          //);
+
+          //  foreach (Revista revista in revistasCadastradas)
+          //  {
+          //      if (revista == null)
+          //          continue;
+
+          //      Console.WriteLine(
+          //          "{0, -10} | {1, -20} | {2, -10} ",
+          //          revista.Id,revista.Titulo ,revista.Caixa
+          //      );
+          //  }
 
             Console.ReadLine();
             Console.WriteLine();

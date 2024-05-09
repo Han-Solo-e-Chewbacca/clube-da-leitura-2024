@@ -11,6 +11,7 @@ namespace ClubeDaLeitura.ConsoleApp
     {
         static void Main(string[] args)
         {
+                               
             RepositorioAmigo repositorioAmigo = new RepositorioAmigo();
             
             TelaAmigo telaAmigo = new TelaAmigo();
@@ -19,9 +20,22 @@ namespace ClubeDaLeitura.ConsoleApp
 
             RepositorioCaixa repositorioCaixa = new RepositorioCaixa();
 
+          
+
             TelaCaixa telaCaixa = new TelaCaixa();
             telaCaixa.tipoEntidade = "Caixa";
             telaCaixa.repositorio = repositorioCaixa;
+            
+
+
+            RepositorioRevista repositorioRevista = new RepositorioRevista();
+            TelaRevista telaRevista = new TelaRevista();
+
+            telaRevista.tipoEntidade = "Revista";           
+            telaRevista.repositorioCaixa = repositorioCaixa;
+            telaRevista.repositorio = repositorioRevista;
+            telaRevista.telaCaixa=telaCaixa;
+            //telaCaixa.repositorioRevista = repositorioRevista;
 
             RepositorioEmprestimo repositorioEmprestimo = new RepositorioEmprestimo();
 
@@ -50,7 +64,7 @@ namespace ClubeDaLeitura.ConsoleApp
                     tela = telaCaixa;
 
                 else if (opcaoPrincipalEscolhida == '3')
-                    tela = tela;
+                    tela = telaRevista;
 
                 else if (opcaoPrincipalEscolhida == '4')
                     tela = telaEmprestimo;
