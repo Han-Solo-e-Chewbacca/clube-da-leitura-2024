@@ -16,13 +16,17 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
         public Amigo Amigo { get; set; }
         public DateTime DataEmprestimo { get; set; }
         public DateTime DataDevolucao { get; set; }
+        public bool Multa { get; set; }
+        public Revista Revista { get; set; }
 
 
-        public Emprestimo(Amigo amigo, DateTime dataEmprestimo, DateTime dataDevolucao)
+        public Emprestimo(Amigo amigo, DateTime dataEmprestimo, DateTime dataDevolucao,bool multa,Revista revista)
         {
             Amigo = amigo;
             DataEmprestimo = dataEmprestimo;
             DataDevolucao = dataDevolucao;
+            Multa = multa;
+            Revista = revista;
         }
 
         public Emprestimo(Amigo amigo)
@@ -42,6 +46,9 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
 
             if (DataDevolucao == null)
                 erros.Add("O campo \"DataDevolucao\" é obrigatório");
+           
+            if (Revista == null)
+                erros.Add("O campo \"Revista\" é obrigatório");
 
 
             return erros;
@@ -54,6 +61,9 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
             this.Amigo = emprestimo.Amigo;            
             this.DataEmprestimo = emprestimo.DataEmprestimo;
             this.DataDevolucao = emprestimo.DataDevolucao;
+            this.Multa = emprestimo.Multa;
+            this.Revista = emprestimo.Revista;
+
         }
     }
 

@@ -45,8 +45,10 @@ namespace ClubeDaLeitura.ConsoleApp
             telaEmprestimo.repositorio=repositorioEmprestimo;
             telaEmprestimo.repositorioAmigo = repositorioAmigo ;
             telaEmprestimo.telaAmigo = telaAmigo ;
-            //telaEmprestimo.repositorioRevista = RepositorioRevista;
-            //telaEmprestimo.telaRevista = telaRevista;
+            telaEmprestimo.repositorioRevista = repositorioRevista;
+            telaEmprestimo.telaRevista = telaRevista;
+            telaEmprestimo.telaCaixa = telaCaixa ;
+            telaEmprestimo.repositorioCaixa=repositorioCaixa ;
 
             RepositorioReserva repositorioReserva = new RepositorioReserva();
 
@@ -85,9 +87,7 @@ namespace ClubeDaLeitura.ConsoleApp
 
                 else if (opcaoPrincipalEscolhida == '5')
                     tela = telaReserva;
-
-                else if (opcaoPrincipalEscolhida == '6')
-                    tela = tela;
+           
 
                 char operacaoEscolhida = tela.ApresentarMenu();
 

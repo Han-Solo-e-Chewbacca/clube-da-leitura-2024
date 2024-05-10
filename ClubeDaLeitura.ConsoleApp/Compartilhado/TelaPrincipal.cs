@@ -23,7 +23,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado
             Console.WriteLine("3 - Revistas ");
             Console.WriteLine("4 - Emprestimo ");
             Console.WriteLine("5 - Reserva ");
-            Console.WriteLine("6 - Multa ");
+            
 
             Console.WriteLine("S - Sair");
 
