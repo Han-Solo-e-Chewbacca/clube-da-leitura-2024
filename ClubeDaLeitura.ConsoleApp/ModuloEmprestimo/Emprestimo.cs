@@ -18,15 +18,17 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
         public DateTime DataDevolucao { get; set; }
         public bool Multa { get; set; }
         public Revista Revista { get; set; }
+        public string Emprestado { get; set; }
 
 
-        public Emprestimo(Amigo amigo, DateTime dataEmprestimo, DateTime dataDevolucao,bool multa,Revista revista)
+        public Emprestimo(Amigo amigo, DateTime dataEmprestimo, DateTime dataDevolucao,bool multa,Revista revista,string emprestado)
         {
             Amigo = amigo;
             DataEmprestimo = dataEmprestimo;
             DataDevolucao = dataDevolucao;
             Multa = multa;
             Revista = revista;
+            Emprestado = emprestado;
         }
 
         public Emprestimo(Amigo amigo)
@@ -63,6 +65,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
             this.DataDevolucao = emprestimo.DataDevolucao;
             this.Multa = emprestimo.Multa;
             this.Revista = emprestimo.Revista;
+            this.Emprestado = emprestimo.Emprestado;
 
         }
     }

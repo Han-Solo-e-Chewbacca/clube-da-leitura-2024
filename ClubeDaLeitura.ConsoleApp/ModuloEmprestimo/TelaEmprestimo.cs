@@ -21,6 +21,31 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
 
         public TelaCaixa telaCaixa = null;
         public RepositorioCaixa repositorioCaixa = null;
+        
+        public override char ApresentarMenu()
+        {
+            Console.Clear();
+
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine($"        Gestão de {tipoEntidade}s        ");
+            Console.WriteLine("----------------------------------------");
+
+            Console.WriteLine();
+
+            Console.WriteLine($"1 - Cadastrar {tipoEntidade}");
+            Console.WriteLine($"2 - Editar {tipoEntidade}");
+            Console.WriteLine($"3 - Excluir {tipoEntidade}");
+            Console.WriteLine($"4 - Visualizar {tipoEntidade}s");
+            Console.WriteLine($"5 - Devolver {tipoEntidade}");
+            Console.WriteLine("S - Voltar");
+
+            Console.WriteLine();
+
+            Console.Write("Escolha uma das opções: ");
+            char operacaoEscolhida = Convert.ToChar(Console.ReadLine());
+
+            return operacaoEscolhida;
+        }
 
         public override void VisualizarRegistros(bool exibirTitulo)
         {
@@ -34,8 +59,8 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
             Console.WriteLine();
 
             Console.WriteLine(
-                "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -20}",
-                "Id", "Data de Empréstimo", "Prazo de Devolução", "Amigo","Revista" 
+                "{0, -3} | {1, -20} | {2, -20} | {3,-20} | {4, -20} | {5,-8} | {6,-4}",
+                "Id", "Data de Empréstimo", "Prazo de Devolução", "Amigo","Revista","Multa","Emprestado" 
             );
 
             ArrayList emprestimosCadastradas = repositorio.SelecionarTodos();
@@ -46,9 +71,9 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
                     continue;
 
                 Console.WriteLine(
-                    "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -20}",
+                    "{0, -3} | {1, -20} | {2, -20} | {3,-20} | {4, -20} | {5,-8} | {6,-4}",
                     emprestimo.Id, emprestimo.DataEmprestimo.ToShortDateString(),
-                    emprestimo.DataDevolucao.ToShortDateString(), emprestimo.Amigo.Nome,emprestimo.Revista.Titulo
+                    emprestimo.DataDevolucao.ToShortDateString(), emprestimo.Amigo.Nome,emprestimo.Revista.Titulo,emprestimo.Multa,emprestimo.Emprestado
                 );
             }
 
@@ -80,13 +105,62 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
             
             DateTime dataDevolucao = dateTime.AddDays(Convert.ToInt32(caixa.DiasEmprestados));
             bool multa = false;
-
-            Emprestimo emprestimo = new Emprestimo(amigoSelecionado,dateTime,dataDevolucao,multa,revista);
+            string emprestado = "SIM";
+           
+            Emprestimo emprestimo = new Emprestimo(amigoSelecionado,dateTime,dataDevolucao,multa,revista,emprestado);
 
             return emprestimo;
 
 
         }
+
+        public  EntidadeBase Devolver()
+        {
+            bool multa = false;
+            string emprestado = "SIM";
+
+            
+            
+
+            
+            Console.WriteLine(
+                "{0, -3} | {1, -20} | {2, -20} | {3,-20} | {4, -20} | {5,-8} | {6,-4}",
+                "Id", "Data de Empréstimo", "Prazo de Devolução", "Amigo", "Revista", "Multa", "Emprestado"
+            );
+
+            ArrayList emprestimosCadastradas = repositorio.SelecionarTodos();
+            
+            foreach (Emprestimo Emprestimo in emprestimosCadastradas)
+            {
+                if (Emprestimo == null)
+                    continue;
+
+                Console.WriteLine(
+                    "{0, -3} | {1, -20} | {2, -20} | {3,-20} | {4, -20} | {5,-8} | {6,-4}",
+                    Emprestimo.Id, Emprestimo.DataEmprestimo.ToShortDateString(),
+                    Emprestimo.DataDevolucao.ToShortDateString(), Emprestimo.Amigo.Nome, Emprestimo.Revista.Titulo, Emprestimo.Multa, Emprestimo.Emprestado
+                );
+            }
+
+            Console.WriteLine("Digite o ID do Emprestimo: ");
+            int idEmprestimo = int.Parse(Console.ReadLine());
+            Emprestimo emprestimoSelecionado = (Emprestimo)repositorio.SelecionarPorId(idEmprestimo);
+
+            if (emprestimoSelecionado.DataDevolucao < DateTime.Now)
+            {
+                 multa = true;
+                 emprestado = "NÃO";
+            }
+            
+
+            Emprestimo emprestimoCadastrados = new Emprestimo(emprestimoSelecionado.Amigo, emprestimoSelecionado.DataEmprestimo, emprestimoSelecionado.DataDevolucao, multa, emprestimoSelecionado.Revista,emprestado);
+
+            return emprestimoCadastrados;
+
+
+        }
+
+
     }
 }
 
