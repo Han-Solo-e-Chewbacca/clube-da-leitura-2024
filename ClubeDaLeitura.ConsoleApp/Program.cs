@@ -105,8 +105,10 @@ namespace ClubeDaLeitura.ConsoleApp
 
                 else if (operacaoEscolhida == '4')
                     tela.VisualizarRegistros(true);
-                if (opcaoPrincipalEscolhida=='4' && operacaoEscolhida == '5')
-                    telaEmprestimo.Devolver();
+                if (opcaoPrincipalEscolhida == '4') {
+                 if (operacaoEscolhida == '5')
+                        telaEmprestimo.Devolver(); }
+                else if (operacaoEscolhida == '6') { }
 
             }
         }

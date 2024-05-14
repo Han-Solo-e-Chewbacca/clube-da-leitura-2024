@@ -18,10 +18,10 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
         public DateTime DataDevolucao { get; set; }
         public bool Multa { get; set; }
         public Revista Revista { get; set; }
-        public string Emprestado { get; set; }
+        public bool Emprestado { get; set; }
 
 
-        public Emprestimo(Amigo amigo, DateTime dataEmprestimo, DateTime dataDevolucao,bool multa,Revista revista,string emprestado)
+        public Emprestimo(Amigo amigo, DateTime dataEmprestimo, DateTime dataDevolucao,bool multa,Revista revista,bool emprestado)
         {
             Amigo = amigo;
             DataEmprestimo = dataEmprestimo;

@@ -105,7 +105,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
             
             DateTime dataDevolucao = dateTime.AddDays(Convert.ToInt32(caixa.DiasEmprestados));
             bool multa = false;
-            string emprestado = "SIM";
+            bool emprestado = true;
            
             Emprestimo emprestimo = new Emprestimo(amigoSelecionado,dateTime,dataDevolucao,multa,revista,emprestado);
 
@@ -114,15 +114,11 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
 
         }
 
-        public  EntidadeBase Devolver()
+        public EntidadeBase Devolver()
         {
+           
             bool multa = false;
-            string emprestado = "SIM";
-
-            
-            
-
-            
+            bool emprestado = true;
             Console.WriteLine(
                 "{0, -3} | {1, -20} | {2, -20} | {3,-20} | {4, -20} | {5,-8} | {6,-4}",
                 "Id", "Data de Empréstimo", "Prazo de Devolução", "Amigo", "Revista", "Multa", "Emprestado"
@@ -148,19 +144,28 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
 
             if (emprestimoSelecionado.DataDevolucao < DateTime.Now)
             {
-                 multa = true;
-                 emprestado = "NÃO";
+                multa = true;
+
             }
+
+            emprestado = false;
+
+            bool conseguiuEditar = repositorio.Editar(idEmprestimo, emprestimoSelecionado);
+            emprestimoSelecionado = new Emprestimo(emprestimoSelecionado.Amigo, emprestimoSelecionado.DataEmprestimo, emprestimoSelecionado.DataDevolucao, multa, emprestimoSelecionado.Revista, emprestado);
+
             
+            emprestimoSelecionado.AtualizarRegistro(emprestimoSelecionado);
 
-            Emprestimo emprestimoCadastrados = new Emprestimo(emprestimoSelecionado.Amigo, emprestimoSelecionado.DataEmprestimo, emprestimoSelecionado.DataDevolucao, multa, emprestimoSelecionado.Revista,emprestado);
 
+            
+            Emprestimo emprestimoCadastrados = new Emprestimo(emprestimoSelecionado.Amigo, emprestimoSelecionado.DataEmprestimo, emprestimoSelecionado.DataDevolucao, multa, emprestimoSelecionado.Revista, emprestado);
+            repositorio.Editar(idEmprestimo,emprestimoCadastrados);
             return emprestimoCadastrados;
 
 
         }
 
-
+       
     }
 }
 

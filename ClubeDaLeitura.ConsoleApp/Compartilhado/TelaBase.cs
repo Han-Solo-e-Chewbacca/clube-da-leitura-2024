@@ -11,7 +11,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado
     {
         public string tipoEntidade = "";
         public RepositorioBase repositorio = null;
-        
+
 
         public virtual char ApresentarMenu()
         {
@@ -176,6 +176,6 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado
         }
 
         protected abstract EntidadeBase ObterRegistro();
-    
+        public virtual void  Devolver(){}
     }
 }
