@@ -63,7 +63,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
                 "Id", "Data de Empréstimo", "Prazo de Devolução", "Amigo","Revista","Multa","Emprestado" 
             );
 
-            ArrayList emprestimosCadastradas = repositorio.SelecionarTodos();
+            List<EntidadeBase> emprestimosCadastradas = repositorio.SelecionarTodos();
 
             foreach (Emprestimo emprestimo in emprestimosCadastradas)
             {
@@ -128,8 +128,8 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
                 "Id", "Data de Empréstimo", "Prazo de Devolução", "Amigo", "Revista", "Multa", "Emprestado"
             );
 
-            ArrayList emprestimosCadastradas = repositorio.SelecionarTodos();
-            
+            List<EntidadeBase> emprestimosCadastradas = repositorio.SelecionarTodos();
+
             foreach (Emprestimo Emprestimo in emprestimosCadastradas)
             {
                 if (Emprestimo == null)

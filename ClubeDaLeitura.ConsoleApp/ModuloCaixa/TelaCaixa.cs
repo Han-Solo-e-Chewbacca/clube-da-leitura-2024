@@ -29,7 +29,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
                 "Id", "Etiqueta", "Cor", "Dias emprestados" 
             );
 
-            ArrayList caixasCadastradas = repositorio.SelecionarTodos();
+            List<EntidadeBase> caixasCadastradas = repositorio.SelecionarTodos();
 
             foreach (Caixa caixa in caixasCadastradas)
             {

@@ -37,7 +37,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloReserva
                 "Id", "Expirado", "Data da Reserva", "Data Limite", "Amigo", "Revista"
             );
 
-            ArrayList reservasCadastradas = repositorio.SelecionarTodos();
+            List<EntidadeBase> reservasCadastradas = repositorio.SelecionarTodos();
 
             foreach (Reserva reserva in reservasCadastradas)
             {
