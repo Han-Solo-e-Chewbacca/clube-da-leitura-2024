@@ -37,6 +37,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
             Console.WriteLine($"3 - Excluir {tipoEntidade}");
             Console.WriteLine($"4 - Visualizar {tipoEntidade}s");
             Console.WriteLine($"5 - Devolver {tipoEntidade}");
+            Console.WriteLine("6 - Pagar Multa");
             Console.WriteLine("S - Voltar");
 
             Console.WriteLine();
@@ -165,7 +166,55 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
 
         }
 
-       
+        public EntidadeBase PagarMulta()
+        {
+
+            bool multa = false;
+            bool emprestado = false;
+            Console.WriteLine(
+                "{0, -3} | {1, -20} | {2, -20} | {3,-20} | {4, -20} | {5,-8} | {6,-4}",
+                "Id", "Data de Empréstimo", "Prazo de Devolução", "Amigo", "Revista", "Multa", "Emprestado"
+            );
+
+            List<EntidadeBase> emprestimosCadastradas = repositorio.SelecionarTodos();
+
+            foreach (Emprestimo Emprestimo in emprestimosCadastradas)
+            {
+                if (Emprestimo == null)
+                    continue;
+
+                Console.WriteLine(
+                    "{0, -3} | {1, -20} | {2, -20} | {3,-20} | {4, -20} | {5,-8} | {6,-4}",
+                    Emprestimo.Id, Emprestimo.DataEmprestimo.ToShortDateString(),
+                    Emprestimo.DataDevolucao.ToShortDateString(), Emprestimo.Amigo.Nome, Emprestimo.Revista.Titulo, Emprestimo.Multa, Emprestimo.Emprestado
+                );
+            }
+
+            Console.WriteLine("Digite o ID do Emprestimo para pagar multa se existir: ");
+            int idEmprestimo = int.Parse(Console.ReadLine());
+            Emprestimo emprestimoSelecionado = (Emprestimo)repositorio.SelecionarPorId(idEmprestimo);
+
+            
+                
+
+            
+
+            
+
+            bool conseguiuEditar = repositorio.Editar(idEmprestimo, emprestimoSelecionado);
+            emprestimoSelecionado = new Emprestimo(emprestimoSelecionado.Amigo, emprestimoSelecionado.DataEmprestimo, emprestimoSelecionado.DataDevolucao, multa, emprestimoSelecionado.Revista, emprestado);
+
+
+            emprestimoSelecionado.AtualizarRegistro(emprestimoSelecionado);
+
+
+
+            Emprestimo emprestimoCadastrados = new Emprestimo(emprestimoSelecionado.Amigo, emprestimoSelecionado.DataEmprestimo, emprestimoSelecionado.DataDevolucao, multa, emprestimoSelecionado.Revista, emprestado);
+            repositorio.Editar(idEmprestimo, emprestimoCadastrados);
+            return emprestimoCadastrados;
+
+
+        }
     }
 }
 
